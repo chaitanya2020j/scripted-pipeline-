@@ -1,9 +1,11 @@
 pipeline {
   agent any
   stages {
-    stages ('---clean---') {
+    stages ('clone repo and clean it') {
       steps{
-        sh "mvn clean"
+        sh "rm-rf my-app"
+        sh "git clone https://github.com/chaitanya2020j/scrited-pipeline-"
+        sh "mvn clean -f scripted"
       }
     }
     stage('--test--') {
